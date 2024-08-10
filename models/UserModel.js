@@ -10,7 +10,7 @@ const UserSchema=new mongoose.Schema({
     lname: {type:String,required:false},
     image: {type:String,required:false},
     color:{type:Number,required:false},
-    proileSetup:{type:Boolean,default:false}, 
+    profileSetup:{type:Boolean,default:false}, 
 })
 
 UserSchema.pre("save",async function(next){
