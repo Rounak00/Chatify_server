@@ -2,6 +2,8 @@ const UserSchema = require("../models/UserModel");
 const jwt = require("jsonwebtoken");
 const JWT_SECRET = require("../config/secret").JWT_SECRET;
 const bcrypt=require("bcrypt")
+const APP_ROOT=require("../config/secret").APP_ROOT;
+const {renameSync,unlinkSync}=require("fs")
 const maxage = 3 * 24 * 60 * 60 * 1000;
 
 const authControllers = {
@@ -130,6 +132,41 @@ const authControllers = {
           } catch (error) {
             next(error);
           }    
+    },
+    async addProfileImage(req,res,next){
+      
+        if(!req.file){
+          return response.status(400).send("File is require");
+        }
+        const date=Date.now();
+        let fileName="uploads/profiles/"+date+req.file.originalname;
+        try{
+        renameSync(req.file.path,fileName);
+        const updateUser=await UserSchema.findByIdAndUpdate(req.userId,{image:fileName},{new:true,runValidators:true});
+        return res.status(200).json({
+          image:updateUser.image
+        }) 
+        }catch(error){
+          const updateUser=await UserSchema.findByIdAndUpdate(req.userId,{image:null},{new:true,runValidators:true});
+          unlinkSync(fileName)
+        next(err);
+      }
+    },
+    async removeProfileImage(req,res,next){
+      try{
+       const ID=req.userId;
+       const user=await UserSchema.findById(ID);
+       if(!user)return res.status(404).send("User not found");
+       if(user.image){
+        unlinkSync(user.image)
+       }
+       user.image=null;
+       await user.save();
+
+       return res.status(200).send("Profile image removed successfully");
+      }catch(error){
+        next(error);
+      }
     }  
   };
 
