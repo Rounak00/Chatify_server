@@ -15,6 +15,7 @@ router.post("/add_profile_image",
              upload.single("profile-image"),
              authControllers.addProfileImage);
 
-router.delete("/remove_profile_image",verifyToken,authControllers.removeProfileImage)             
+router.delete("/remove_profile_image",verifyToken,authControllers.removeProfileImage)
+router.post("/logout",authControllers.logout);             
 module.exports=router;
 

@@ -167,6 +167,12 @@ const authControllers = {
       }catch(error){
         next(error);
       }
+    },
+    async logout(req,res,next){
+      try{
+        res.cookie('chatify',"",{maxAge:1,secure:true,sameSite:"None"})
+        return res.status(200).send("Log out successfully")
+      }catch(err){next(err)}
     }  
   };
 
