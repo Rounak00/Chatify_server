@@ -6,11 +6,12 @@ const cookieParser =require("cookie-parser")
 const errorHandler=require("./middleware/errorHandler");
 const router=require("./routes/routes");
 const setupSocket = require("./socket.js");
+const CLIENT_ROOT=require("./config/secret.js").CLIENT_ROOT
 
 const app=express();
 app.use(cors(
      {
-        origin: '*',
+        origin: CLIENT_ROOT,
         credentials: true,
       }
 ));
