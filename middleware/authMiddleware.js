@@ -3,6 +3,7 @@ const JWT_SECRET=require("../config/secret").JWT_SECRET
 
 const verifyToken=(req,res,next)=>{
       const token=req.cookies.chatify;
+      console.log("Token is  :" ,token);
       if(!token){
         return res.status(401).send("You are not authenticated!")
       }else{
