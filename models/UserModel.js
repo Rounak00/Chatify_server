@@ -1,4 +1,4 @@
-const { genSalt } = require("bcrypt");
+
 const  mongoose  = require("mongoose");
 const bcrypt =require("bcrypt")
 
@@ -19,4 +19,4 @@ UserSchema.pre("save",async function(next){
     next();
 })
 
-module.exports=mongoose.model("User",UserSchema);
+module.exports=mongoose.model("Users",UserSchema);
