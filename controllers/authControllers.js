@@ -28,7 +28,7 @@ const authControllers = {
       return res
       .cookie("chatify", generateToken, {
         maxAge: maxage,
-        httpOnly:true
+        httpOnly:false
       })
       .status(201)
       .json({
@@ -67,7 +67,7 @@ const authControllers = {
         return res
         .cookie("chatify", generateToken, {
           maxAge: maxage,
-          httpOnly:true
+          httpOnly:false
         })
         .status(200)
         .json({
