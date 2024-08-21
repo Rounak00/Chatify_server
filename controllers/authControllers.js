@@ -111,7 +111,8 @@ const authControllers = {
     async updateProfile(req,res,next){
       
         try {
-          const ID=req.userId;
+          const ID="66c5ff53234a8ff51406e910";
+          
           const {fname,lname,color}=req.body;
           if(!fname || !lname){
             return res.status(400).send("First name , last name and color need to be give");
