@@ -25,17 +25,27 @@ const authControllers = {
       );
 
       
-      return res
-      .cookie("chatify", generateToken, {
-        maxAge: maxage,
-        httpOnly:true,
-        secure:true,
-      })
+      //  res
+      // .cookie("chatify", generateToken, {
+      //   maxAge: maxage,
+      //   httpOnly:true,
+      //   secure:true,
+      // })
+      // .status(201)
+      // .json({
+      //   id: user.id,
+      //   email: user.email,
+      //   profileSetup: user.profileSetup,
+        
+      // });
+
+      res
       .status(201)
       .json({
         id: user.id,
         email: user.email,
         profileSetup: user.profileSetup,
+        access_token: generateToken,
       });
     } catch (error) {
     //   console.error("Signup Error:", error); // Log the error for debugging
@@ -65,12 +75,24 @@ const authControllers = {
         );
   
         
-        return res
-        .cookie("chatify", generateToken, {
-          maxAge: maxage,
-          httpOnly:true,
-          secure:true,
-        })
+        // res
+        // .cookie("chatify", generateToken, {
+        //   maxAge: maxage,
+        //   httpOnly:true,
+        //   secure:true,
+        // })
+        // .status(200)
+        // .json({
+        //   id: user.id,
+        //   email: user.email,
+        //   profileSetup: user.profileSetup,
+        //   fname: user.fname,
+        //   lname: user.lname,
+        //   image: user.image,
+        //   color: user.color
+        // });
+
+        res
         .status(200)
         .json({
           id: user.id,
@@ -79,7 +101,8 @@ const authControllers = {
           fname: user.fname,
           lname: user.lname,
           image: user.image,
-          color: user.color
+          color: user.color,
+          access_token: generateToken,
         });
       } catch (error) {
         next(error);
@@ -111,7 +134,7 @@ const authControllers = {
     async updateProfile(req,res,next){
       
         try {
-          const ID="66c5ff53234a8ff51406e910";
+          const ID=req.userId;
           
           const {fname,lname,color}=req.body;
           if(!fname || !lname){
