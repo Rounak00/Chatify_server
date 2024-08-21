@@ -11,7 +11,7 @@ const CLIENT_ROOT=require("./config/secret.js").CLIENT_ROOT
 const app=express();
 app.use(cors(
      {
-        origin: CLIENT_ROOT,
+        origin: CLIENT_ROOT, 
         credentials: true,
       }
 ));
