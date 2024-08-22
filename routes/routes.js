@@ -10,7 +10,7 @@ const upload_file=multer({dest:"uploads/files"})
 
 router.post("/signup",authControllers.signup);
 router.post("/login",authControllers.login);
-router.get("/user_info",authControllers.getUserInfo);
+router.get("/user_info",verifyToken,authControllers.getUserInfo);
 router.post("/update_profile",verifyToken,authControllers.updateProfile);
 
 router.post("/add_profile_image",

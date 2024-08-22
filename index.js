@@ -7,7 +7,7 @@ const errorHandler=require("./middleware/errorHandler");
 const router=require("./routes/routes");
 const setupSocket = require("./socket.js");
 const CLIENT_ROOT=require("./config/secret.js").CLIENT_ROOT
-const bodyParser =require("body-parser");
+// const bodyParser =require("body-parser");
 
 const app=express();
 app.use(express.urlencoded()); 
