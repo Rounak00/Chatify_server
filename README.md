@@ -1,9 +1,10 @@
 ## About :
 <p>This is the backend part of Chatify project. In the project I used MVC file sturcture and it is a REST api based application.  For web socket I used Socket.io and for faile handling used Multer  Package. Also have user other packages like JWT and Bcrypt for security. </p>
 <br/>
-## Frontend portion of the Project : https://github.com/Rounak00/Chatify_client
-<br/><br/>
 
+## Frontend portion of the Project : https://github.com/Rounak00/Chatify_client
+
+<br/>
 <h4>Concepts : </h4>
 <ul>
   <li>All Routes in the Project :<br/>
