@@ -8,6 +8,16 @@ const multer=require("multer");
 const upload_dp=multer({dest:"uploads/profiles/"})
 const upload_file=multer({dest:"uploads/files"})
 
+// Health route
+router.get("/health", (req, res) => {
+  res.status(200).json({
+    status: "ok",
+    service: "api",
+    timestamp: new Date().toISOString(),
+  });
+});
+
+//Working routes
 router.post("/signup",authControllers.signup);
 router.post("/login",authControllers.login);
 router.get("/user_info",verifyToken,authControllers.getUserInfo);
